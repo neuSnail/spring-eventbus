@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <name>spring-eventbus</name>
+    <developers>
+        <developer>
+            <name>neusnail</name>
+            <email>1076507715@qq.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/neuSnail/spring-eventbus</connection>
+        <developerConnection>scm:git:git@github.com/neuSnail/spring-eventbus.git</developerConnection>
+        <url>https://github.com/neuSnail/spring-eventbus</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <url>https://github.com/neuSnail/spring-eventbus</url>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.neusnail</groupId>
+    <artifactId>spring-eventbus</artifactId>
+    <version>1.0</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+            <!--配置生成Javadoc包-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <!--指定编码为UTF-8-->
+                    <encoding>UTF-8</encoding>
+                    <aggregate>true</aggregate>
+                    <charset>UTF-8</charset>
+                    <docencoding>UTF-8</docencoding>
+                    <show>package</show>
+                    <!-- 禁用java 8 的DocLint新特性，以确保当javadoc有编译错误时，也能正常生成javadoc jar包-->
+                    <doclint>none</doclint>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--配置生成源码包-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+<!--            <plugin>-->
+<!--                <groupId>org.sonatype.plugins</groupId>-->
+<!--                <artifactId>nexus-staging-maven-plugin</artifactId>-->
+<!--                <version>1.6.7</version>-->
+<!--                <extensions>true</extensions>-->
+<!--                <configuration>-->
+<!--                    <serverId>ossrh</serverId>-->
+<!--                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>-->
+<!--                    <autoReleaseAfterClose>true</autoReleaseAfterClose>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.2.3.RELEASE</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.greenrobot</groupId>
+            <artifactId>eventbus</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>transmittable-thread-local</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>oss</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>oss</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+    <properties>
+        <gpg.executable>gpg2</gpg.executable>
+    </properties>
+
+</project>
