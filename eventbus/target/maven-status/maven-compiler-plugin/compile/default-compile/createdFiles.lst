@@ -1,5 +1,0 @@
-com/didiglobal/ehr/eventbus/BaseEvent.class
-com/didiglobal/ehr/eventbus/SubscriberRegister.class
-com/didiglobal/ehr/eventbus/annotation/EventSubscriber.class
-com/didiglobal/ehr/eventbus/EventPublisher.class
-com/didiglobal/ehr/eventbus/EventPublisherBuilder.class
